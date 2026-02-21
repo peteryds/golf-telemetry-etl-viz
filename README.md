@@ -1,2 +1,50 @@
-# golf-telemetry-etl-viz
-An end-to-end data engineering and analytics pipeline for processing, diagnosing, and visualizing golf launch monitor telemetry (Garmin Approach R10).
+# ⛳️ golf-telemetry-etl-viz
+
+An end-to-end data engineering and analytics pipeline for processing, diagnosing, and visualizing golf launch monitor telemetry (Garmin Approach R10). 
+
+This project bridges the gap between raw golf simulator data and actionable coaching insights. Instead of relying on static, one-size-fits-all metrics, it utilizes dynamic baselines (medians) and golf domain knowledge to automatically classify shot quality and identify specific swing flaws.
+
+## 🚀 Project Objectives
+
+1. **Data Ingestion (ETL to AWS):** Automatically extract CSV exports from the Garmin R10 app and load the raw telemetry data into AWS for scalable storage and querying.
+2. **Diagnostic Analytics:** Apply a custom, domain-specific algorithm to evaluate shot quality based on the unique baseline of each golf club.
+3. **Data Visualization:** Generate intuitive, coach-ready visual reports (e.g., Diverging Bar Charts for miss directions, Stacked Bar Charts for shot quality) to track performance trends.
+
+## 🧠 The Analytics Engine: Dynamic Shot Classification
+
+Traditional golf apps often just show distances. This project implements a **Diagnostic Tagging System** that identifies *why* a shot was missed by cross-referencing Carry Distance, Smash Factor, Launch Angle, Spin Rate, and Carry Deviation. 
+
+Shots are categorized into the following buckets based on beginner-friendly tolerances:
+
+* **🟢 Solid Strike:** Good contact and acceptable direction.
+* **⚪️ Thin Shot:** Launch angle drops > 5° below the club's median & Carry < 95%.
+* **⚪️ Fat Shot:** Carry drops < 70% & Spin Rate drops < 80% (turf interaction).
+* **⚪️ Off-center:** Smash factor drops < 80% of the club's median (heel/toe strikes).
+* **⚪️ Severe Offline:** Left/Right deviation exceeds 20% of the carry distance.
+
+## 🛠️ Tech Stack
+
+* **Data Engineering:** Python, `boto3`, AWS (S3 / RDS)
+* **Data Analysis:** R (`tidyverse`, `janitor`) / Python (`pandas`, `numpy`)
+* **Data Visualization:** R (`ggplot2`, `gt`) / Python (`matplotlib`)
+
+## 📂 Repository Structure
+
+\`\`\`text
+golf-telemetry-etl-viz/
+├── data_ingestion/      # Scripts to parse Garmin CSVs and upload to AWS
+├── analysis/            # R and Python scripts for dynamic shot classification
+├── visualization/       # Code for generating coach-ready charts and tables
+├── sample_data/         # Anonymized sample R10 telemetry data
+├── requirements.txt     # Python dependencies
+└── README.md
+\`\`\`
+
+## 📊 Sample Visualizations
+
+* **Shot Quality Breakdown:** A stacked bar chart using Solid Strikes as the baseline to evaluate club-by-club consistency.
+* **Miss Pattern Analysis:** A diverging bar chart highlighting "One-Way Misses" (e.g., severe slices/pushes vs. hooks/pulls) to inform swing mechanics adjustments.
+
+## 💡 Future Scope
+* Automate the AWS ingestion process via AWS Lambda upon file drop.
+* Build an interactive Shiny or Streamlit dashboard for real-time practice feedback.
