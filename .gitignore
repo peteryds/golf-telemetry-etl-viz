@@ -229,7 +229,7 @@ sample_data/*.csv
 sample_data/*.xlsx
 
 # Ignore generated outputs (charts and tables)
-*.png
+# *.png
 *Averages.csv
 /output
 
