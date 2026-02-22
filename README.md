@@ -1,5 +1,7 @@
 # ⛳️ golf-telemetry-etl-viz
 
+![Project Status](https://img.shields.io/badge/Status-Work_in_Progress-yellow)
+
 An end-to-end data engineering and analytics pipeline for processing, diagnosing, and visualizing golf launch monitor telemetry (Garmin Approach R10). 
 
 This project bridges the gap between raw golf simulator data and actionable coaching insights. Instead of relying on static, one-size-fits-all metrics, it utilizes dynamic baselines (medians) and golf domain knowledge to automatically classify shot quality and identify specific swing flaws.
