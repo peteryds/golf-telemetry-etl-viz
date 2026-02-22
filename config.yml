@@ -1,0 +1,17 @@
+default:
+  paths:
+    input_file: "sample_data/Golf Data.csv"
+    output_csv: "output/Solid_Strike_Averages.csv"
+    plot_quality: "output/Shot_Quality_Solid_Base.png"
+    plot_misses: "output/Diverging_Miss_Direction.png"
+  
+  thresholds:
+    thin_launch_drop: 5
+    thin_carry_pct: 0.95
+    fat_carry_pct: 0.70
+    fat_spin_pct: 0.80
+    offcenter_smash_pct: 0.80
+    severe_offline_pct: 0.20
+  
+  clubs:
+    order: ["Driver", "3 Wood", "6 Iron", "7 Iron", "8 Iron", "9 Iron", "Pitching Wedge"]
