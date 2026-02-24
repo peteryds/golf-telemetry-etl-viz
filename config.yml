@@ -4,13 +4,15 @@ default:
     output_csv: "output/Solid_Strike_Averages.csv"
     plot_quality: "output/Shot_Quality_Solid_Base.png"
     plot_misses: "output/Diverging_Miss_Direction.png"
+    plot_table: "output/Solid_Strike_Table.png"
+
   
   thresholds:
-    thin_launch_drop: 5
+    thin_launch_drop: 3.5
     thin_carry_pct: 0.95
-    fat_carry_pct: 0.70
+    fat_carry_pct: 0.80
     fat_spin_pct: 0.80
-    offcenter_smash_pct: 0.80
+    offcenter_smash_pct: 0.93
     severe_offline_pct: 0.20
   
   clubs:

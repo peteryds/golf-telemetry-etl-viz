@@ -20,6 +20,7 @@ tryCatch({
   source("analysis/R/metrics_calculation.R")
   source("viz/visualize_quality.R")
   source("viz/visualize_misses.R")
+  source("viz/visualize_table.R")
 }, error = function(e) {
   log_error("Failed to source modules: {e$message}")
   stop("Execution halted.")
@@ -47,5 +48,6 @@ log_info("✅ Successfully exported metrics to: {cfg$paths$output_csv}")
 log_info("Generating visual reports...")
 plot_shot_quality(df_classified, output_path = cfg$paths$plot_quality)
 plot_miss_direction(df_classified, output_path = cfg$paths$plot_misses)
+plot_solid_averages_table(df_classified, output_path = cfg$paths$plot_table)
 
 log_info("🎉 Pipeline execution completed successfully!")
